@@ -19,7 +19,7 @@ This document reviews all important submissions for this project.
 | . tgaFile folder | Save output TGA format file                                                                                                                                                                                              |
 | .vscode folder   | Vscode debug file                                                                                                                                                                                                        |
 
-The rendering result obtained by removing the back through zbuffer and rendering the uv texture through linear interpolation.<br />![]
+The rendering result obtained by removing the back through zbuffer and rendering the uv texture through linear interpolation.<br />
 <img src="https://github.com/a446187673/MyTinyRenderer/blob/master/picture/output.png?raw=true"></img>
 
 ## Commit 1: code refactoring

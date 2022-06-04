@@ -19,7 +19,8 @@ This document reviews all important submissions for this project.
 | . tgaFile folder | Save output TGA format file                                                                                                                                                                                              |
 | .vscode folder   | Vscode debug file                                                                                                                                                                                                        |
 
-The rendering result obtained by removing the back through zbuffer and rendering the uv texture through linear interpolation.<br />![](C:\Users\Pencil\Desktop\Code\MyTinyRenderer\picture\output.png)
+The rendering result obtained by removing the back through zbuffer and rendering the uv texture through linear interpolation.<br />![]
+<img src="https://github.com/a446187673/MyTinyRenderer/blob/master/picture/output.png?raw=true"></img>
 
 ## Commit 1: code refactoring
 
@@ -27,4 +28,4 @@ Reconstructed geometry.h, Added comments for some code.
 
 | File Update | Description                                                                                                                                                                                                                                                                               |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| geometry.h  | <br />- `inline Vec3 <T>operator `, `inline Vec22 <T>operator `the overloaded operators are inline. <br />- `T&amp; operator[](const int I) `: adds the overloading of access vectors through subscripts, and adds the error reporting function when subscripts cross the boundary.<br /> |
+| geometry.h  | - `inline Vec3 <T>operator `, `inline Vec22 <T>operator `the overloaded operators are inline. <br />- `T&amp; operator[](const int I) `: adds the overloading of access vectors through subscripts, and adds the error reporting function when subscripts cross the boundary.<br /> |

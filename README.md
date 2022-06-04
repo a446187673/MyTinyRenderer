@@ -20,7 +20,7 @@
 | .vscode        | vscode调试文件                                                                                |
 
 通过zbuffer进行背面剔除并通过线性插值绘制uv纹理后得到的渲染结果  
-![Alt]([images/1.png](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/output.png?raw=true))  
+<img src="https://github.com/a446187673/MyTinyRenderer/blob/master/picture/output.png?raw=true"></img>  
 ## 提交1:代码重构
 
 重构了geometry.h，为部分代码增加了注释

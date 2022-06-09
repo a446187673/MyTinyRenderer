@@ -1,6 +1,6 @@
 ## 项目概述
 
-本项目是我通过学习[Wiki](https://github.com/ssloy/tinyrenderer/wiki)制作的一个渲染器。该项目可以对obj格式的文件进行渲染，使用了TGAimage文件输出框架。由我自己编写了渲染管道的代码，并不断完善以及添加新功能。<br />Please click this [link](https://github.com/a446187673/MyTinyRenderer/blob/master/READMENG.md) for English documents.
+本项目是我通过学习[Wiki](https://github.com/ssloy/tinyrenderer/wiki)制作的一个渲染器。该项目可以对obj格式的文件进行渲染，使用了TGAimage文件输出框架。由我自己编写了渲染管线的代码，并不断完善以及添加新功能。<br />Please click this [link](https://github.com/a446187673/MyTinyRenderer/blob/master/READMENG.md) for English documents.
 
 ## 描述
 
@@ -22,6 +22,7 @@
 
 重构了geometry.h，为部分代码增加了注释
 
+<<<<<<< HEAD
 | 更新文件 | 描述 |
 | --- | --- |
 | geometry.h | - `inline Vec3<T> operator`<br /> , `inline Vec2<T> operator`<br />内联了重载后的运算符<br />- `T& operator[](const int i)`<br />:增加通过下标访问向量的重载,并增加下标越界时的报错功能
@@ -29,6 +30,11 @@
  |
 
 
+=======
+| 更新文件       | 描述                                                                                                                                             |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| geometry.h |  - `inline Vec3<T> operator` , `inline Vec2<T> operator`内联了重载后的运算符<br />- `T& operator[](const int i)`:增加通过下标访问向量的重载,并增加下标越界时的报错功能<br /> |
+>>>>>>> c0dcf3ac5d7513803e502e989eac150bf0c8329d
 ## 提交0:obj资源以及渲染器雏形
 | 新文件 | 描述 |
 | --- | --- |

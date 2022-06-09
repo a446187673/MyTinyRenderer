@@ -22,6 +22,7 @@ Encapsulate the rendering method into rasterizer.h/cpp, and add the initializati
 
 Reconstructed geometry.h, Added comments for some code.
 
+<<<<<<< HEAD
 | File Update | Description |
 | --- | --- |
 | geometry.h | - `inline Vec3 <T>operator`<br />, `inline Vec22 <T>operator`<br />the overloaded operators are inline. <br />- `T&amp; operator[](const int I)`<br />: adds the overloading of access vectors through subscripts, and adds the error reporting function when subscripts cross the boundary.
@@ -29,6 +30,11 @@ Reconstructed geometry.h, Added comments for some code.
  |
 
 
+=======
+| File Update | Description                                                                                                                                                                                                                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| geometry.h  | - `inline Vec3 <T>operator `, `inline Vec2 <T>operator `the overloaded operators are inline. <br />- `T&amp; operator[](const int I) `: adds the overloading of access vectors through subscripts, and adds the error reporting function when subscripts cross the boundary.<br /> |
+>>>>>>> c0dcf3ac5d7513803e502e989eac150bf0c8329d
 ## Commit 0:obj resources and the rudiment of the renderer
 | New File | Description |
 | --- | --- |

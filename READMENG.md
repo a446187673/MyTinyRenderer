@@ -12,7 +12,7 @@ Reconstructed geometry.h, Added comments for some code.
 
 | File Update | Description                                                                                                                                                                                                                                                                               |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| geometry.h  | - `inline Vec3 <T>operator `, `inline Vec22 <T>operator `the overloaded operators are inline. <br />- `T&amp; operator[](const int I) `: adds the overloading of access vectors through subscripts, and adds the error reporting function when subscripts cross the boundary.<br /> |
+| geometry.h  | - `inline Vec3 <T>operator `, `inline Vec2 <T>operator `the overloaded operators are inline. <br />- `T&amp; operator[](const int I) `: adds the overloading of access vectors through subscripts, and adds the error reporting function when subscripts cross the boundary.<br /> |
 ## Commit 0:obj resources and the rudiment of the renderer
 
 | New File         | Description                                                                                                                                                                                                              |

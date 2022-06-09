@@ -8,6 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "${workspaceFolder}/rasterizer.cpp",
                 "${workspaceFolder}/tgaimage.cpp",
                 "${workspaceFolder}/model.cpp",
                 "${workspaceFolder}/geometry.cpp",

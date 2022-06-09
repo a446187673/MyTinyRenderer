@@ -5,25 +5,41 @@
 ## 描述
 
 本文档回顾了对于本项目的所有重要提交
+## 提交2:光栅化器
+
+将渲染方法封装进rasterizer.h/cpp，并将zbuffer的初始化过程加入TGAimage类的构造函数中。另外为geometry.h/cpp添加了用于向量和矩阵间相互转换的方法。
+
+| 新文件 | 描述 |
+| --- | --- |
+| rasterizer.h/cpp | <br />- `void line(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor color);`画一条从点(x0,y0)到(x1,y1)的直线<br />- `Vec3f barycentric(Vec3f A, Vec3f B,Vec3f C, Vec3f P);`计算P点对于三角形ABC的质心坐标<br />- `void triangle_line(Vec3f* pts, Vec2i* uv, Model* model, TGAImage& image, float intensity, float* zbuffer);`用画线填充的方法绘制三角形<br />- `void triangle_box(Vec3f* pts, Vec2i* uv, Model* model, TGAImage& image, float intensity, float* zbuffer);`用包围盒的方法绘制三角形<br /> |
+
+| 更新文件 | 描述 |
+| --- | --- |
+| tgaimage.h/cpp | zbuffer的初始化 |
+| geometry.h/cpp | <br />- `static Vec3f m2v(Matrix m);`向量->矩阵<br />- `static Matrix v2m(Vec3f v);`矩阵->向量<br />- `static Matrix viewport(int x, int y, int w, int h, int depth);`视角矩阵<br /> |
+
 ## 提交1:代码重构
 
 重构了geometry.h，为部分代码增加了注释
 
-| 更新文件       | 描述                                                                                                                                             |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| geometry.h |  - `inline Vec3<T> operator` , `inline Vec22<T> operator`内联了重载后的运算符<br />- `T& operator[](const int i)`:增加通过下标访问向量的重载,并增加下标越界时的报错功能<br /> |
+| 更新文件 | 描述 |
+| --- | --- |
+| geometry.h | - `inline Vec3<T> operator`<br /> , `inline Vec2<T> operator`<br />内联了重载后的运算符<br />- `T& operator[](const int i)`<br />:增加通过下标访问向量的重载,并增加下标越界时的报错功能
+
+ |
+
+
 ## 提交0:obj资源以及渲染器雏形
-
-| 新文件            | 描述                                                                                        |
-| -------------- | ----------------------------------------------------------------------------------------- |
-| main.cpp       | 渲染管线主要部分                                                                                  |
-| tgaimage.h/cpp | TGAimage文件输出框架                                                                            |
-| model.h/cpp    | obj格式的文件加载                                                                                |
+| 新文件 | 描述 |
+| --- | --- |
+| main.cpp | 渲染管线主要部分 |
+| tgaimage.h/cpp | TGAimage文件输出框架 |
+| model.h/cpp | obj格式的文件加载 |
 | geometry.h/cpp | 定义结构Vec2f(float) / Vec2i(int) / Vec3f / Vec3i(向量)以及Matrix(矩阵),并提供了向量的叉乘、点乘、归一化以及矩阵的初始化等方法 |
-| obj文件夹         | 储存obj格式文件以及uv贴图                                                                           |
-| .exeFile文件夹    | 储存可执行文件                                                                                   |
-| .tgaFile文件     | 储存输出的tga格式文件                                                                              |
-| .vscode        | vscode调试文件                                                                                |
+| obj文件夹 | 储存obj格式文件以及uv贴图 |
+| .exeFile文件夹 | 储存可执行文件 |
+| .tgaFile文件 | 储存输出的tga格式文件 |
+| .vscode | vscode调试文件 |
 
-通过zbuffer进行背面剔除并通过线性插值绘制uv纹理后得到的渲染结果  
-<img src="https://github.com/a446187673/MyTinyRenderer/blob/master/picture/output.png?raw=true"></img>  
+
+通过zbuffer进行背面剔除并通过线性插值绘制uv纹理后得到的渲染结果<br />![](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/output.png?raw=true#crop=0&crop=0&crop=1&crop=1&id=ci1mb&originHeight=792&originWidth=798&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)

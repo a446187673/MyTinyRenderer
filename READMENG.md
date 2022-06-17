@@ -13,6 +13,8 @@ The model transformation and camera transformation matrix are added to simulate 
 | rasterizer.h/cpp | <br />- `Matrix get_model_matrix(char c,float rotation);`modeling transformation<br />- `Matrix get_camera_matrix(Vec3f camera, Vec3f center, Vec3f up);`camera transformation<br />- `Matrix get_projection_matrix(Vec3f camera, Vec3f center);`projection transformation<br />- `Matrix get_viewport_matrix(int width, int height, int depth);`viewport transformation<br /> |
 | geometry.h/cpp | <br />- `template <> Vec3<float>::Vec3(Matrix m)`<br />- `Matrix::Matrix(Vec3f v) : m(std::vector<std::vector<float> >(4, std::vector<float>(1, 1.0f))), rows(4), cols(1)`method of adding vector matrix interchange in Constructor<br /> |
 
+Set the camera position to (2,1,3), focus to (0,0,1), and rotate 20 degrees around the Y axis.<br />![avatar](https://raw.githubusercontent.com/a446187673/MyTinyRenderer/master/picture/Y20.png)
+
 ## Commit 2: rasterizer
 
 Encapsulate the rendering method into rasterizer.h/cpp, and add the initialization process of zbuffer to the constructor of the TGAimage class. In addition, a method for mutual conversion between vectors and matrices is added for geometry.h/cpp. 

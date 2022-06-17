@@ -5,6 +5,14 @@
 ## 描述
 
 本文档回顾了对于本项目的所有重要提交
+## 提交3:摄像机变换
+增加了模型变换与摄像机变换矩阵，以模拟渲染管线中视口变换的全过程，并优化了一些方法
+
+| 更新文件 | 描述 |
+| --- | --- |
+| rasterizer.h/cpp | <br />- `Matrix get_model_matrix(char c,float rotation);`模型变换矩阵<br />- `Matrix get_camera_matrix(Vec3f camera, Vec3f center, Vec3f up);`摄像机变换矩阵<br />- `Matrix get_projection_matrix(Vec3f camera, Vec3f center);`投影变换矩阵<br />- `Matrix get_viewport_matrix(int width, int height, int depth);`视角变换矩阵<br /> |
+| geometry.h/cpp | <br />- `template <> Vec3<float>::Vec3(Matrix m)`<br />- `Matrix::Matrix(Vec3f v) : m(std::vector<std::vector<float> >(4, std::vector<float>(1, 1.0f))), rows(4), cols(1)`在构造函数中添加向量矩阵互换的方法<br /> |
+
 ## 提交2:光栅化器
 
 将渲染方法封装进rasterizer.h/cpp，并将zbuffer的初始化过程加入TGAimage类的构造函数中。另外为geometry.h/cpp添加了用于向量和矩阵间相互转换的方法。

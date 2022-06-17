@@ -28,6 +28,8 @@ Encapsulate the rendering method into rasterizer.h/cpp, and add the initializati
 | tgaimage.h/cpp  | Initialization of zbuffer  |
 | geometry.h/cpp  | <br />- `static Vec3f m2v(Matrix m); `vector turns to matrix <br />- `static Matrix v2m(Vec3f v); `matrix turns to vector <br />- `static Matrix viewport(int x, int y, int w, int h, int depth); `visual angle matrix<br /> |
 
+Output zbuffer picture<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/zbuffer.png)
+
 ## Commit 1: code refactoring
 
 Reconstructed geometry.h, Added comments for some code.

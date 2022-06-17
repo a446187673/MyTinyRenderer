@@ -13,7 +13,7 @@
 | rasterizer.h/cpp | <br />- `Matrix get_model_matrix(char c,float rotation);`模型变换矩阵<br />- `Matrix get_camera_matrix(Vec3f camera, Vec3f center, Vec3f up);`摄像机变换矩阵<br />- `Matrix get_projection_matrix(Vec3f camera, Vec3f center);`投影变换矩阵<br />- `Matrix get_viewport_matrix(int width, int height, int depth);`视角变换矩阵<br /> |
 | geometry.h/cpp | <br />- `template <> Vec3<float>::Vec3(Matrix m)`<br />- `Matrix::Matrix(Vec3f v) : m(std::vector<std::vector<float> >(4, std::vector<float>(1, 1.0f))), rows(4), cols(1)`在构造函数中添加向量矩阵互换的方法<br /> |
 
-设置摄像机位置为(2,1,3),焦点为(0,0,1)，并绕Y轴旋转20度所得的渲染结果<br />![avatar](http://baidu.com/pic/doge.png)
+设置摄像机位置为(2,1,3),焦点为(0,0,1)，并绕Y轴旋转20度所得的渲染结果<br />![avatar](https://raw.githubusercontent.com/a446187673/MyTinyRenderer/master/picture/Y20.png)
 
 ## 提交2:光栅化器
 

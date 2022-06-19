@@ -9,6 +9,7 @@
                 "-g",
                 "${file}",
                 "${workspaceFolder}/rasterizer.cpp",
+                "${workspaceFolder}/shader.cpp",
                 "${workspaceFolder}/tgaimage.cpp",
                 "${workspaceFolder}/model.cpp",
                 "${workspaceFolder}/geometry.cpp",

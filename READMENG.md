@@ -5,13 +5,27 @@ This project is through my study [Wiki ](https://github.com/ssloy/tinyrenderer/w
 ## Description
 
 This document reviews all important submissions for this project.
+## Commit 4: pivoting correction and Gouraud Shading 
+Some codes are reconstructed and shader.h/cpp is added to simulate vertex shaders and slice shaders. The perspective interpolation is corrected in the rasterization process, and GouraudShader is added for Gouraud Shading.
+
+| New File  | Description  |
+| --- | --- |
+| shader.h/cpp | <br />- `virtual Vec4f vertex(int iface,int jvertex) `vertex shader <br />- `virtual bool fragment(Vec3f bc_screen, TGAColor &amp;color) `element shader <br />- the four matrices used for View transformation are now stored in the shader<br /> |
+
+| File Update | Description  |
+| --- | --- |
+| geometry.h/cpp | <br />- `Template <typenameT>struct Vec4 `added a four-dimensional vector and overloaded its operator multiplied by the matrix. <br /> |
+| tgaimage.h | <br />- Store the zbuffer value as an image <br /> |
+| rasterizer.h/cpp | <br />- in the process of rasterization, the slice shader is used for coloring. <br />- In the future, we will use the bounding box method for rasterization.<br /> |
+
+As for the perspective correction, the previous program did not consider the distance of the object on the world coordinates when calculating the centroid coordinates, so now the perspective interpolation is corrected. <br />Before correction: <br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/0.png)<br />after correction: <br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/0.png)<br />the following figure is used results obtained by rendering Gouraud Shading <br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Gouraud%20Shading.png)
 ## Commit 3: camera transformation 
 The model transformation and camera transformation matrix are added to simulate the whole process of visual Port transformation in rendering pipelines, and some methods are optimized.
 
 | File Update | Description  |
 | --- | --- |
-| rasterizer.h/cpp | <br />- `Matrix get_model_matrix(char c,float rotation);`modeling transformation<br />- `Matrix get_camera_matrix(Vec3f camera, Vec3f center, Vec3f up);`camera transformation<br />- `Matrix get_projection_matrix(Vec3f camera, Vec3f center);`projection transformation<br />- `Matrix get_viewport_matrix(int width, int height, int depth);`viewport transformation<br /> |
-| geometry.h/cpp | <br />- `template <> Vec3<float>::Vec3(Matrix m)`<br />- `Matrix::Matrix(Vec3f v) : m(std::vector<std::vector<float> >(4, std::vector<float>(1, 1.0f))), rows(4), cols(1)`method of adding vector matrix interchange in Constructor<br /> |
+| rasterizer.h/cpp | - `Matrix get_model_matrix(char c,float rotation);`modeling transformation<br />- `Matrix get_camera_matrix(Vec3f camera, Vec3f center, Vec3f up);`camera transformation<br />- `Matrix get_projection_matrix(Vec3f camera, Vec3f center);`projection transformation<br />- `Matrix get_viewport_matrix(int width, int height, int depth);`viewport transformation<br /> |
+| geometry.h/cpp | - `template <> Vec3<float>::Vec3(Matrix m)`<br />- `Matrix::Matrix(Vec3f v) : m(std::vector<std::vector<float> >(4, std::vector<float>(1, 1.0f))), rows(4), cols(1)`method of adding vector matrix interchange in Constructor<br /> |
 
 Set the camera position to (2,1,3), focus to (0,0,1), and rotate 20 degrees around the Y axis.<br />![avatar](https://raw.githubusercontent.com/a446187673/MyTinyRenderer/master/picture/Y20.png)
 
@@ -21,12 +35,12 @@ Encapsulate the rendering method into rasterizer.h/cpp, and add the initializati
 
 | New File  | Description  |
 | --- | --- |
-| rasterizer.h/cpp  | <br />- `void line(int x0, int y0, int x1, int y1, TGAImage &amp;image, TGAColor color); `draw a straight line from point (x0,y0) to (x1,y1) <br />- `Vec3f barycentric(Vec3f A, Vec3f B ,Vec3f C, Vec3f P); `calculate the centroid coordinates of point P for triangle ABC <br />- `void triangle_line(Vec3f* pts, Vec2i* uv, Model* model, TGAImage&amp; image, float intensity, float* zbuffer); `draw a triangle by drawing lines <br />- `void triangle_box(Vec3f* pts, Vec2i* uv, Model* model, TGAImage&amp; image, float intensity, float* zbuffer); `draw a triangle by using a bounding box<br /> |
+| rasterizer.h/cpp  | - `void line(int x0, int y0, int x1, int y1, TGAImage &amp;image, TGAColor color); `draw a straight line from point (x0,y0) to (x1,y1) <br />- `Vec3f barycentric(Vec3f A, Vec3f B ,Vec3f C, Vec3f P); `calculate the centroid coordinates of point P for triangle ABC <br />- `void triangle_line(Vec3f* pts, Vec2i* uv, Model* model, TGAImage&amp; image, float intensity, float* zbuffer); `draw a triangle by drawing lines <br />- `void triangle_box(Vec3f* pts, Vec2i* uv, Model* model, TGAImage&amp; image, float intensity, float* zbuffer); `draw a triangle by using a bounding box<br /> |
 
 | File Update | Description  |
 | --- | --- |
 | tgaimage.h/cpp  | Initialization of zbuffer  |
-| geometry.h/cpp  | <br />- `static Vec3f m2v(Matrix m); `vector turns to matrix <br />- `static Matrix v2m(Vec3f v); `matrix turns to vector <br />- `static Matrix viewport(int x, int y, int w, int h, int depth); `visual angle matrix<br /> |
+| geometry.h/cpp  | - `static Vec3f m2v(Matrix m); `vector turns to matrix <br />- `static Matrix v2m(Vec3f v); `matrix turns to vector <br />- `static Matrix viewport(int x, int y, int w, int h, int depth); `visual angle matrix<br /> |
 
 Output zbuffer picture<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/zbuffer.png)
 

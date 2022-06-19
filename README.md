@@ -18,7 +18,7 @@
 | tgaimage.h | - 将zbuffer值作为图片储存<br /> |
 | rasterizer.h/cpp | - 在光栅化的过程中使用片元着色器进行着色<br />- 以后统一使用包围盒法进行光栅化<br /> |
 
-对于透视矫正，先前的程序在计算质心坐标的时候，没有考虑物体在世界坐标上的远近，故现在对透视插值进行矫正。<br />矫正前：<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/0.png)<br />矫正后：<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/0.png)<br />下图是用Gouraud Shading进行渲染所得到的结果<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Gouraud%20Shading.png)
+对于透视矫正，先前的程序在计算质心坐标的时候，没有考虑物体在世界坐标上的远近，故现在对透视插值进行矫正。<br />矫正前：<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/0.png)<br />矫正后：<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/1.png)<br />下图是用Gouraud Shading进行渲染所得到的结果<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Gouraud%20Shading.png)
 ## 提交3:摄像机变换
 增加了模型变换与摄像机变换矩阵，以模拟渲染管线中视口变换的全过程，并优化了一些方法
 

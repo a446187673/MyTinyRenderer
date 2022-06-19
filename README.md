@@ -5,6 +5,20 @@
 ## 描述
 
 本文档回顾了对于本项目的所有重要提交
+## 提交4:透视矫正和Gouraud Shading
+对部分代码进行了重构，增加了shader.h/cpp来模拟顶点着色器与片元着色器。在光栅化过程中对透视插值进行矫正，并且添加了GouraudShader用来进行Gouraud Shading。
+
+| 新文件 | 描述 |
+| --- | --- |
+| shader.h/cpp | <br />- `virtual Vec4f vertex(int iface,int jvertex)`顶点着色器<br />- `virtual bool fragment(Vec3f bc_screen, TGAColor &color)`片元着色器<br />- 用于视图变换的4个矩阵现在储存于shader<br /> |
+
+| 更新文件 | 描述 |
+| --- | --- |
+| geometry.h/cpp | <br />- `template <typenameT> struct Vec4`添加了四维向量并重载了其与矩阵相乘的运算符。<br /> |
+| tgaimage.h | <br />- 将zbuffer值作为图片储存<br /> |
+| rasterizer.h/cpp | <br />- 在光栅化的过程中使用片元着色器进行着色<br />- 以后统一使用包围盒法进行光栅化<br /> |
+
+对于透视矫正，先前的程序在计算质心坐标的时候，没有考虑物体在世界坐标上的远近，故现在对透视插值进行矫正。<br />矫正前：<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/0.png)<br />矫正后：<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/0.png)<br />下图是用Gouraud Shading进行渲染所得到的结果<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Gouraud%20Shading.png)
 ## 提交3:摄像机变换
 增加了模型变换与摄像机变换矩阵，以模拟渲染管线中视口变换的全过程，并优化了一些方法
 

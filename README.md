@@ -28,6 +28,7 @@
 | tgaimage.h/cpp | zbuffer的初始化 |
 | geometry.h/cpp | <br />- `static Vec3f m2v(Matrix m);`向量->矩阵<br />- `static Matrix v2m(Vec3f v);`矩阵->向量<br />- `static Matrix viewport(int x, int y, int w, int h, int depth);`视角矩阵<br /> |
 
+输出的zbuffer图片<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/zbuffer.png)
 ## 提交1:代码重构
 
 重构了geometry.h，为部分代码增加了注释

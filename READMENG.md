@@ -10,13 +10,13 @@ Some codes are reconstructed and shader.h/cpp is added to simulate vertex shader
 
 | New File  | Description  |
 | --- | --- |
-| shader.h/cpp | <br />- `virtual Vec4f vertex(int iface,int jvertex) `vertex shader <br />- `virtual bool fragment(Vec3f bc_screen, TGAColor &amp;color) `element shader <br />- the four matrices used for View transformation are now stored in the shader<br /> |
+| shader.h/cpp | `virtual Vec4f vertex(int iface,int jvertex) `vertex shader <br />- `virtual bool fragment(Vec3f bc_screen, TGAColor &amp;color) `element shader <br />- the four matrices used for View transformation are now stored in the shader<br /> |
 
 | File Update | Description  |
 | --- | --- |
-| geometry.h/cpp | <br />- `Template <typenameT>struct Vec4 `added a four-dimensional vector and overloaded its operator multiplied by the matrix. <br /> |
-| tgaimage.h | <br />- Store the zbuffer value as an image <br /> |
-| rasterizer.h/cpp | <br />- in the process of rasterization, the slice shader is used for coloring. <br />- In the future, we will use the bounding box method for rasterization.<br /> |
+| geometry.h/cpp |- `Template <typenameT>struct Vec4 `added a four-dimensional vector and overloaded its operator multiplied by the matrix. <br /> |
+| tgaimage.h |- Store the zbuffer value as an image <br /> |
+| rasterizer.h/cpp |- in the process of rasterization, the slice shader is used for coloring. <br />- In the future, we will use the bounding box method for rasterization.<br /> |
 
 As for the perspective correction, the previous program did not consider the distance of the object on the world coordinates when calculating the centroid coordinates, so now the perspective interpolation is corrected. <br />Before correction: <br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/0.png)<br />after correction: <br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/0.png)<br />the following figure is used results obtained by rendering Gouraud Shading <br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Gouraud%20Shading.png)
 ## Commit 3: camera transformation 

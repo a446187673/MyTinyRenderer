@@ -5,6 +5,16 @@ This project is through my study [Wiki ](https://github.com/ssloy/tinyrenderer/w
 ## Description
 
 This document reviews all important submissions for this project.
+## Commit 5:TBN matrix and Phong Shading 
+This submission is mainly to add Toon Shading,Flat Shading, and Phong Shading coloring methods. In the Phong Shading, the normals in the tangent space stored in the normal map are converted into normals represented by View coordinates through TBN matrix, so as to calculate the lighting intensity of the slice elements and then color them to make the rendering results look concave-convex texture and different reflective texture. <br />In addition, some problems in the previous submitted code were fixed, mainly the error of overloading the multiplication operator between the matrix and the vector. 
+
+| File Update | Description  |
+| --- | --- |
+| shader.h/cpp  | - `class ToonShader : public Shader `Toon shader <br />- `class FlatShader : public Shader `Flat shader <br />- `class PhongShader : public Shader `Phong shader <br /> |
+| model.h/cpp  | - `Vec3f norm(Vec2f uvf) `returns the normal value of the tangent space. <br /> |
+| geometry.h/cpp  | - `Matrix operator*(const float& num);`<br />- `Vec4f operator*(Vec4f& vec);`<br />- `Vec3f operator*(Vec3f& vec);`<br />- The multiplication calculation between matrix and vector and floating-point number is updated and corrected.<br /> |
+
+In this submission, the calculation method of TBN matrix is referred [tangent space of OpenGL core technology](https://haiyang.blog.csdn.net/article/details/58671953?spm=1001.2014.3001.5506).<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/TBN1.png)<br />The relationship between tangent, secondary tangent and triangle edge can be seen from this figure, and then expressed by matrix.<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/TBN2.png)<br />Then deform and find the inverse.<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/TBN3.png)<br />The final Phong Shading results are as follows:<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Phong%20Shading.png)<br />In addition, the results obtained by Flat Shading and Toon Shading are displayed respectively.<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Flat%20Shading.png)![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Toon%20Shading.png)
 ## Commit 4: pivoting correction and Gouraud Shading 
 Some codes are reconstructed and shader.h/cpp is added to simulate vertex shaders and slice shaders. The perspective interpolation is corrected in the rasterization process, and GouraudShader is added for Gouraud Shading.
 

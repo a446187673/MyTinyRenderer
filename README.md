@@ -5,6 +5,16 @@
 ## 描述
 
 本文档回顾了对于本项目的所有重要提交
+## 提交5:TBN矩阵和Phong Shading
+本次提交主要是增加Toon Shading，Flat Shading以及Phong Shading这几种着色方法，其中在Phong Shading时将法线贴图中存储的切线空间中的法线通过TBN矩阵转换为用视图坐标表示的法线，从而计算出片元的光照强度，进而进行着色，使的得到的渲染结果看起来凹凸纹理和不同的反光质感。<br />另外，修复了之前提交代码中的一些问题，主要是矩阵与向量之间的乘法运算符重载函数的错误。
+
+| 更新文件 | 描述 |
+| --- | --- |
+| shader.h/cpp | - `class ToonShader : public Shader`卡通着色器<br />- `class FlatShader : public Shader`平面着色器<br />- `class PhongShader : public Shader`冯氏着色器<br /> |
+| model.h/cpp | - `Vec3f norm(Vec2f uvf)`返回切线空间的法线值<br /> |
+| geometry.h/cpp | - `Matrix operator*(const float& num);`<br />- `Vec4f operator*(Vec4f& vec);`<br />- `Vec3f operator*(Vec3f& vec);`<br />- 更新并修正了矩阵与向量以及浮点数之间的乘法计算。<br /> |
+
+本次提交中，TBN矩阵的计算方式参考了[OpenGL核心技术之切线空间](https://haiyang.blog.csdn.net/article/details/58671953?spm=1001.2014.3001.5506)<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/TBN1.png)<br />由该图可以看出切线、副切线和三角形边的关系，进而用矩阵表示<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/TBN2.png)<br />再进行变形，求逆可得<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/TBN3.png)<br />最终进行Phong Shading得到的结果如下<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Phong%20Shading.png)<br />另外分别展示Flat Shading和Toon Shading得到的结果<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Flat%20Shading.png)![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Toon%20Shading.png)
 ## 提交4:透视矫正和Gouraud Shading
 对部分代码进行了重构，增加了shader.h/cpp来模拟顶点着色器与片元着色器。在光栅化过程中对透视插值进行矫正，并且添加了GouraudShader用来进行Gouraud Shading。
 

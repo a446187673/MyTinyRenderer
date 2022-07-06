@@ -1,10 +1,17 @@
 ## 项目概述
 
-本项目是我通过学习[Wiki](https://github.com/ssloy/tinyrenderer/wiki)制作的一个渲染器。该项目可以对obj格式的文件进行渲染，使用了TGAimage文件输出框架。由我自己编写了渲染管线的代码，并不断完善以及添加新功能。<br />Please click this [link](https://github.com/a446187673/MyTinyRenderer/blob/master/READMENG.md) for English documents.
-
+本项目是我通过学习[Wiki](https://github.com/ssloy/tinyrenderer/wiki)制作的一个渲染器。该项目可以对obj格式的文件进行渲染，使用了TGAimage文件输出框架。由我自己编写了渲染管线的代码，并不断完善以及添加新功能。<br />Please click this [link](https://github.com/a446187673/MyTinyRenderer/blob/master/READMENG.md) for English documents.<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Blinn-Phong%20head.png)![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/diablo.png)
 ## 描述
-
 本文档回顾了对于本项目的所有重要提交
+## 提交5.5: Blinn-Phong光照模型
+补充第五次提交，使用Blinn-Phong光照模型的计算方法替换Phong Shader中原本的着色方法，提高了计算速度并且得到了更加接近真实情况的渲染结果。<br />Blinn-Phong光照模型计算公式：<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Blinn-Phong.png)
+
+| 更新文件 | 描述 |
+| --- | --- |
+| shader.h/cpp | - `class PhongShader : public Shader` 在着色时考虑了环境光(Ambient)、漫反射(Diffuse)和高光反射(Specular)。<br /> |
+
+
+渲染得到的结果如下：<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Blinn-Phong%20head.png)
 ## 提交5:TBN矩阵和Phong Shading
 本次提交主要是增加Toon Shading，Flat Shading以及Phong Shading这几种着色方法，其中在Phong Shading时将法线贴图中存储的切线空间中的法线通过TBN矩阵转换为用视图坐标表示的法线，从而计算出片元的光照强度，进而进行着色，使的得到的渲染结果看起来凹凸纹理和不同的反光质感。<br />另外，修复了之前提交代码中的一些问题，主要是矩阵与向量之间的乘法运算符重载函数的错误。
 

@@ -1,10 +1,17 @@
 ## Project Overview
 
 This project is through my study [Wiki ](https://github.com/ssloy/tinyrenderer/wiki)create a renderer. This project can render files in obj format and use TGAimage file output framework. I wrote the code of rendering pipeline by myself, and constantly improved and added new functions.
-
+<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Blinn-Phong%20head.png)![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/diablo.png)
 ## Description
 
-This document reviews all important submissions for this project.
+This document reviews all important submissions for this project.  
+## Commit5.5: Blinn-Phong Lighting model
+In addition to the fifth submission, the original coloring method in the Blinn-Phong is replaced by the calculation method of the Phong Shader lighting model, which improves the calculation speed and obtains rendering results that are closer to the real situation. <br />Calculation Formula of Blinn-Phong illumination model:<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Blinn-Phong.png)
+
+| File Update | Description  |
+| --- | --- |
+| shader.h/cpp | - `class PhongShader : public Shader`Added Ambient、Diffuse and Specular。<br /> |
+The rendering result is as follows:<br />![avatar](https://github.com/a446187673/MyTinyRenderer/blob/master/picture/Blinn-Phong%20head.png)
 ## Commit 5:TBN matrix and Phong Shading 
 This submission is mainly to add Toon Shading,Flat Shading, and Phong Shading coloring methods. In the Phong Shading, the normals in the tangent space stored in the normal map are converted into normals represented by View coordinates through TBN matrix, so as to calculate the lighting intensity of the slice elements and then color them to make the rendering results look concave-convex texture and different reflective texture. <br />In addition, some problems in the previous submitted code were fixed, mainly the error of overloading the multiplication operator between the matrix and the vector. 
 

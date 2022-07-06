@@ -170,6 +170,7 @@ Vec4f PhongShader::vertex(int iface,int jvertex)
     normal[jvertex] = model->norm(iface,jvertex);
     //屏幕坐标 = 视角变换矩阵*投影变换矩阵*摄像机变换矩阵*模型变换矩阵 即视口变换
     gl_Vertex = viewport_matrix * projection_matrix * camera_matrix * model_matrix * gl_Vertex;
+
     return gl_Vertex;
 
 }
@@ -182,10 +183,15 @@ bool PhongShader::fragment(Vec3f bc_screen, TGAColor &color)
     Matrix TBN = get_TBN(bc_screen);
     Vec3f n = model->norm(uvP);
     n.normalize();
-    n = TBN * n;
-    float P_intensity = std::max(0.0f,n.normalize() * light_dir);
-    //着色
-    color = P_color*P_intensity;
+    n = (TBN * n).normalize();
+    Vec3f h = (camera + light_dir).normalize();//半程向量，即出射光源和入射光源相加并归一化后的向量
+    float spec = pow(std::max(n*h, 0.0f), model->specular(uvP));//计算高光specular
+    float diff = std::max(0.f, n * light_dir);//计算漫反射光diffuse
+    //着色 环境光Ambient + 漫反射光diffuse + 高光Specular
+    color.b = std::min<float>( 5 + P_color.b * (1.2 * diff + 0.6 * spec), 255);
+    color.g = std::min<float>( 5 + P_color.g * (1.2 * diff + 0.6 * spec), 255);
+    color.r = std::min<float>( 5 + P_color.r * (1.2 * diff + 0.6 * spec), 255);
+
     return false;
 }
 Matrix PhongShader::get_TBN(Vec3f bc_screen)

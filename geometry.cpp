@@ -99,6 +99,7 @@ Vec3f Matrix::operator*(Vec3f& vec)
     res.z = m[2][0]*vec.x + m[2][1]*vec.y + m[2][2]*vec.z;
     return res;
 }
+
 Matrix Matrix::transpose() {
     Matrix result(cols, rows);
     for(int i=0; i<rows; i++)

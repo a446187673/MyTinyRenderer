@@ -5,7 +5,7 @@
 #include "geometry.h"
 
 extern Model *model;
-
+extern Vec3f camera;
 class Shader
 {public:
     Shader() = default;
@@ -96,6 +96,5 @@ class PhongShader : public Shader
     virtual bool fragment(Vec3f bc_screen, TGAColor &color);
     //获取TBN矩阵
     Matrix get_TBN(Vec3f bc_screen);
-
 };
 #endif //__SHADER_H__

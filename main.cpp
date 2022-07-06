@@ -18,9 +18,9 @@ const int width = 800;
 const int height = 800;
 const int depth = 255;
 //设置光照方向
-Vec3f light_dir = Vec3f(0,1,1);
+Vec3f light_dir(1,4,5);
 //设置摄像机
-Vec3f camera(1,1,2);
+Vec3f camera(1,1,4);
 //设置焦点
 Vec3f center(0,0,0);
 
@@ -31,6 +31,7 @@ int main(int argc, char **argv)
         else
                 model = new Model("obj/african_head.obj"); //代码方式构造model
 
+        Rasterizer ras;
         //构造TGA图像
         TGAImage image(width,height, TGAImage::RGB);
         //构造zbuffer
@@ -40,7 +41,6 @@ int main(int argc, char **argv)
         //ToonShader shader;
         //FlatShader shader;
         PhongShader shader;
-        Rasterizer ras;
 
         //模型变换矩阵
         shader.model_matrix = shader.get_model_matrix('X',0);
